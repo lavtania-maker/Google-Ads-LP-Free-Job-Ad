@@ -801,7 +801,7 @@ export default function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white/80 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-100/50 flex flex-col gap-6"
+              className="bg-white/80 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-100/50 flex flex-col gap-3"
             >
               <div className="text-center lg:text-left">
                 <h1 className="text-3xl sm:text-4xl lg:text-[2.25rem] xl:text-[2.65rem] font-extrabold leading-[1.3] md:leading-tight tracking-normal md:tracking-tight text-slate-900">
@@ -851,7 +851,7 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 mt-4">
+              <div className="flex flex-col gap-3 -mt-1">
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <Button 
                     onClick={() => setIsHiringModalOpen(true)}
