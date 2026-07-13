@@ -784,7 +784,7 @@ export default function App() {
       <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[580px] md:h-[620px] flex items-center bg-[#F3F4F6]">
         {/* Full bleed background image */}
         <div className="absolute inset-0 z-0">
-          <picture>
+          <picture className="w-full h-full block">
             <source media="(max-width: 768px)" srcSet="/hero-bg-mobile.webp" type="image/webp" />
             <source srcSet="/hero-bg.webp" type="image/webp" />
             <img 
