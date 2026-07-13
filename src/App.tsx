@@ -461,13 +461,19 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
               <div className="flex h-10 w-full rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-0 transition-all group/phone shadow-sm">
                 <div className="flex items-center border-r border-slate-200 bg-slate-100/30">
                   <Popover>
-                    <PopoverTrigger render={<Button variant="ghost" size="sm" className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger" />}>
+                    <PopoverTrigger asChild>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger"
+                      >
                         <img loading="lazy" 
                           src={COUNTRIES.find(c => c.code === phoneCode)?.flag} 
                           alt="Flag" 
                           className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" 
                         />
                         <ChevronDown className="h-3 w-3 text-slate-400 group-hover/trigger:text-primary transition-colors" />
+                      </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-[300px] p-0" align="start">
                       <Command>
@@ -529,7 +535,12 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             <div className="space-y-1">
               <Label className="text-sm font-semibold text-slate-700">Select the free job ad you want to claim <span className="text-slate-400 font-normal">(optional)</span></Label>
               <Popover>
-                <PopoverTrigger render={<Button variant="outline" className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white" />}>
+                <PopoverTrigger asChild>
+                  <Button 
+                    type="button"
+                    variant="outline" 
+                    className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white"
+                  >
                     <span className="truncate">
                       {selectedFreeAds.length === 0 
                         ? "Select free job ad options" 
@@ -538,6 +549,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                           : selectedFreeAds.map(val => FREE_AD_OPTIONS.find(o => o.value === val)?.label || val).join(", ")}
                     </span>
                     <ChevronDown className="h-4 w-4 opacity-50 ml-2 shrink-0" />
+                  </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-3 bg-white border border-slate-200 rounded-xl shadow-xl space-y-2 z-[150]" align="start">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
@@ -793,7 +805,8 @@ export default function App() {
           <div className="max-w-xl lg:max-w-lg xl:max-w-xl w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="bg-white/80 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-100/50 flex flex-col gap-3"
             >
@@ -988,9 +1001,9 @@ export default function App() {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                
-                transition={{ delay: i * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
                 className="group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(237,53,84,0.15)] transition-all duration-500 flex flex-col items-center text-center"
               >
                 <div className="w-28 h-28 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
@@ -1107,8 +1120,8 @@ export default function App() {
             {/* Video Testimonial in High-Fidelity MacBook Pro Mockup */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-20 max-w-4xl mx-auto px-6 w-full"
             >
@@ -1219,8 +1232,8 @@ export default function App() {
             {/* CARD 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
@@ -1243,8 +1256,8 @@ export default function App() {
             {/* CARD 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
@@ -1267,8 +1280,8 @@ export default function App() {
             {/* CARD 3 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
