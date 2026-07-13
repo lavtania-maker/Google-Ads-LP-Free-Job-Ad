@@ -1000,8 +1000,8 @@ export default function App() {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                
                 transition={{ delay: i * 0.1 }}
                 className="group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(237,53,84,0.15)] transition-all duration-500 flex flex-col items-center text-center"
               >
@@ -1119,8 +1119,8 @@ export default function App() {
             {/* Video Testimonial in High-Fidelity MacBook Pro Mockup */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-20 max-w-4xl mx-auto px-6 w-full"
             >
@@ -1231,8 +1231,8 @@ export default function App() {
             {/* CARD 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
@@ -1255,8 +1255,8 @@ export default function App() {
             {/* CARD 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
@@ -1279,8 +1279,8 @@ export default function App() {
             {/* CARD 3 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              
               transition={{ duration: 0.5, delay: 0.3 }}
               className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.05)] border border-slate-100/80 p-8 sm:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 group"
             >
