@@ -1,3 +1,6 @@
+import employerHeroBg from "./assets/images/hero-bg.jpg";
+import employerHeroBgWebp from "./assets/images/hero-bg.webp";
+import employerHeroBgMobileWebp from "./assets/images/hero-bg-mobile.webp";
 import * as React from "react";
 import { 
   Users, 
@@ -784,18 +787,16 @@ export default function App() {
       <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[580px] md:h-[620px] flex items-center bg-[#F3F4F6]">
         {/* Full bleed background image */}
         <div className="absolute inset-0 z-0">
-          <picture className="w-full h-full block">
-            <source media="(max-width: 768px)" srcSet="/hero-bg-mobile.webp" type="image/webp" />
-            <source srcSet="/hero-bg.webp" type="image/webp" />
-            <img 
-              src="/hero-bg.jpg" 
-              alt="Employer hiring landscape" 
-              className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
-              referrerPolicy="no-referrer"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </picture>
+          <img 
+            src={employerHeroBg} 
+            srcSet={`${employerHeroBgMobileWebp} 800w, ${employerHeroBgWebp} 1376w`}
+            sizes="100vw"
+            alt="Employer hiring landscape" 
+            className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
+            referrerPolicy="no-referrer"
+            fetchPriority="high"
+            decoding="async"
+          />
           {/* Gentle overlay to guarantee text legibility on super small screens */}
           <div className="absolute inset-0 bg-black/5 lg:bg-transparent" />
         </div>
