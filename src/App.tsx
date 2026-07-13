@@ -1364,7 +1364,7 @@ export default function App() {
             <p className="text-lg text-[#555555] font-semibold italic">Frequently asked questions from employers</p>
           </div>
           
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion className="w-full space-y-4">
             {[
               {
                 q: "How to claim this free job ad?",
