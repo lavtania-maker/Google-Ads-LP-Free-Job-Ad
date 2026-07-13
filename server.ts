@@ -7,7 +7,7 @@ dotenv.config();
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.DEV_PORT ?? process.env.PORT ?? 3000);
 
   // Middleware to parse JSON
   app.use(express.json());
