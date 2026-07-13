@@ -461,19 +461,13 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
               <div className="flex h-10 w-full rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-0 transition-all group/phone shadow-sm">
                 <div className="flex items-center border-r border-slate-200 bg-slate-100/30">
                   <Popover>
-                    <PopoverTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger"
-                      >
+                    <PopoverTrigger render={<Button variant="ghost" size="sm" className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger" />}>
                         <img loading="lazy" 
                           src={COUNTRIES.find(c => c.code === phoneCode)?.flag} 
                           alt="Flag" 
                           className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" 
                         />
                         <ChevronDown className="h-3 w-3 text-slate-400 group-hover/trigger:text-primary transition-colors" />
-                      </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-[300px] p-0" align="start">
                       <Command>
@@ -535,12 +529,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             <div className="space-y-1">
               <Label className="text-sm font-semibold text-slate-700">Select the free job ad you want to claim <span className="text-slate-400 font-normal">(optional)</span></Label>
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button 
-                    type="button"
-                    variant="outline" 
-                    className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white"
-                  >
+                <PopoverTrigger render={<Button variant="outline" className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white" />}>
                     <span className="truncate">
                       {selectedFreeAds.length === 0 
                         ? "Select free job ad options" 
@@ -549,7 +538,6 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                           : selectedFreeAds.map(val => FREE_AD_OPTIONS.find(o => o.value === val)?.label || val).join(", ")}
                     </span>
                     <ChevronDown className="h-4 w-4 opacity-50 ml-2 shrink-0" />
-                  </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-3 bg-white border border-slate-200 rounded-xl shadow-xl space-y-2 z-[150]" align="start">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
