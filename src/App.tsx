@@ -68,7 +68,6 @@ import {
   CommandItem,
 } from "@/components/ui/command";
 // @ts-ignore
-import employerHeroBg from "./assets/images/fb_hr_manager_widescreen_1783483895940.jpg";
 
 const SUGGESTED_POSITIONS: Option[] = [
   { label: "Marketing Executive", value: "Marketing Executive" },
@@ -357,7 +356,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
               </p>
 
               <div className="max-w-[110px] mx-auto pt-0.5">
-                <img 
+                <img loading="lazy" 
                   src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-ec64e417-6572-4498-90f7-0591b5b3eaff.png" 
                   alt="AJobThing & Maukerja" 
                   className="w-full h-auto object-contain rounded-lg"
@@ -406,7 +405,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             onClick={onScrollToTestimonials}
             className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-3 hover:bg-white/20 transition-all cursor-pointer"
           >
-            <img 
+            <img loading="lazy" 
               src="https://www.ajobthing.com/mkt/images/ajt/google.svg" 
               alt="Google" 
               className="h-2.5 w-2.5 brightness-0 invert" 
@@ -465,7 +464,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                         size="sm" 
                         className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger"
                       >
-                        <img 
+                        <img loading="lazy" 
                           src={COUNTRIES.find(c => c.code === phoneCode)?.flag} 
                           alt="Flag" 
                           className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" 
@@ -489,7 +488,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                                 className="gap-3 py-2 cursor-pointer"
                               >
                                 <div className="flex items-center gap-3 flex-1">
-                                  <img src={c.flag} alt={c.iso} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" />
+                                  <img loading="lazy" src={c.flag} alt={c.iso} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" />
                                   <span className="font-bold text-sm text-slate-700 min-w-[40px]">{c.code}</span>
                                   <span className="text-xs text-slate-500 font-medium truncate">{c.name}</span>
                                 </div>
@@ -756,7 +755,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-14 md:h-16 items-center">
               <a href="https://www.maukerja.my/" target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-90 transition-opacity">
-                <img 
+                <img loading="lazy" 
                   src="https://www.maukerja.my/mkt/images/logo-mk.png" 
                   alt="Maukerja" 
                   className="h-10 w-auto"
@@ -785,12 +784,18 @@ export default function App() {
       <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[580px] md:h-[620px] flex items-center bg-[#F3F4F6]">
         {/* Full bleed background image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={employerHeroBg} 
-            alt="Employer hiring landscape" 
-            className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
-            referrerPolicy="no-referrer"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/hero-bg-mobile.webp" type="image/webp" />
+            <source srcSet="/hero-bg.webp" type="image/webp" />
+            <img 
+              src="/hero-bg.jpg" 
+              alt="Employer hiring landscape" 
+              className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
+              referrerPolicy="no-referrer"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
           {/* Gentle overlay to guarantee text legibility on super small screens */}
           <div className="absolute inset-0 bg-black/5 lg:bg-transparent" />
         </div>
@@ -923,7 +928,7 @@ export default function App() {
                 {/* Duplicating logos for infinite scroll effect */}
                 {[...TRUSTED_LOGOS, ...TRUSTED_LOGOS, ...TRUSTED_LOGOS, ...TRUSTED_LOGOS].map((logo: any, i: number) => (
                   <div key={i} className="flex-none opacity-75 hover:opacity-100 transition-all duration-300">
-                    <img 
+                    <img loading="lazy" 
                       src={logo.url} 
                       alt={logo.name} 
                       className={`${logo.isBig ? "h-14 sm:h-20" : "h-11 sm:h-16"} w-auto object-contain`}
@@ -965,28 +970,28 @@ export default function App() {
               {
                 title: "Reach 5 Million+ Candidates in One Click",
                 desc: "Your job ad goes live across Maukerja, Ricebowl, and partner platforms. One posting, no reposting, no extra cost.",
-                icon: <img src="https://www.maukerja.my/mkt/images/mk/reason_get3x.png" alt="Reach Candidates" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
+                icon: <img loading="lazy" src="https://www.maukerja.my/mkt/images/mk/reason_get3x.png" alt="Reach Candidates" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
                 bgColor: "bg-green-50",
                 iconColor: "bg-green-100"
               },
               {
                 title: "Chat With Applicants Instantly",
                 desc: "Message candidates the moment they apply on AJobThing Chat. Reply faster with templates and AI quick replies, without sharing your personal WhatsApp.",
-                icon: <img src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-937cc484-7a5b-4825-9127-edc68a91d955.png" alt="Chat With Applicants" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
+                icon: <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-937cc484-7a5b-4825-9127-edc68a91d955.png" alt="Chat With Applicants" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
                 bgColor: "bg-blue-50",
                 iconColor: "bg-blue-100"
               },
               {
                 title: "Post Job for FREE",
                 desc: "Post freelance, part-time, internship, volunteer, high-pay, and Singapore jobs for free. Pay only when you need more.",
-                icon: <img src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-7e8c886c-ad7d-42f2-be36-64abdb2b1a47.png" alt="Post Job for FREE" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
+                icon: <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-7e8c886c-ad7d-42f2-be36-64abdb2b1a47.png" alt="Post Job for FREE" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
                 bgColor: "bg-orange-50",
                 iconColor: "bg-orange-100"
               },
               {
                 title: "Screening Is Not Your Job Anymore",
                 desc: "Our AI filters and contacts only qualified, interested candidates. Saving you hours of screening. You focus on interviews and hiring the right person.",
-                icon: <img src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-8edc4ee1-d023-4cc2-ad5d-e40542f77ebd.png" alt="Screening Is Not Your Job" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
+                icon: <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-8edc4ee1-d023-4cc2-ad5d-e40542f77ebd.png" alt="Screening Is Not Your Job" className="w-full h-full object-contain" referrerPolicy="no-referrer" />,
                 bgColor: "bg-purple-50",
                 iconColor: "bg-purple-100"
               }
@@ -1026,7 +1031,7 @@ export default function App() {
             
             {/* Horizontal Badge */}
             <div className="mt-10 inline-flex flex-wrap items-center justify-center gap-4 bg-white px-8 py-4 rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-50">
-              <img 
+              <img loading="lazy" 
                 src="https://www.ajobthing.com/mkt/images/ajt/google.svg" 
                 alt="Google" 
                 className="h-5 w-5" 
@@ -1066,7 +1071,7 @@ export default function App() {
                   <Card className="h-full border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 rounded-[1.5rem] bg-white group/card">
                     <CardContent className="p-8 flex flex-col h-full">
                       <div className="flex items-center gap-6 mb-6">
-                        <img src={t.img} alt={t.company} className="h-16 w-auto object-contain shrink-0" />
+                        <img loading="lazy" src={t.img} alt={t.company} className="h-16 w-auto object-contain shrink-0" />
                         <div>
                           <h4 className="font-bold text-[#1A1A1A] tracking-tight text-base uppercase">{t.company}</h4>
                           <p className="text-xs font-bold text-slate-400">{t.name}</p>
@@ -1148,7 +1153,7 @@ export default function App() {
                       >
                         {/* HIGH RESOLUTION REAL YOUTUBE THUMBNAIL */}
                         <div className="absolute inset-0 bg-slate-950">
-                          <img 
+                          <img loading="lazy" 
                             src="https://img.youtube.com/vi/dA9R41LtX7s/maxresdefault.jpg" 
                             alt="Maukerja Success Story Video Thumbnail"
                             className="w-full h-full object-cover opacity-90 scale-100 group-hover:scale-[1.03] transition-transform duration-700"
@@ -1330,7 +1335,7 @@ export default function App() {
             ].map((sol, i) => (
               <Card key={i} className="border-none shadow-sm h-full rounded-[3rem] overflow-hidden bg-white group">
                 <div className={`aspect-[16/10] overflow-hidden ${sol.title === "AJobThing Chat" ? "bg-[#FFF5F6] p-6" : ""}`}>
-                  <img 
+                  <img loading="lazy" 
                     src={sol.img} 
                     alt={sol.title} 
                     className={`w-full h-full ${sol.title === "AJobThing Chat" ? "object-contain group-hover:scale-105" : "object-cover group-hover:scale-110"} transition-transform duration-700`} 
@@ -1435,7 +1440,7 @@ export default function App() {
       <section className="py-12 bg-[#FFF5F6] mb-24 rounded-[3rem] max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center order-2 md:order-1">
-            <img 
+            <img loading="lazy" 
               src="https://www.maukerja.my/mkt/images/mk/cta.svg" 
               alt="Hiring Solution" 
               className="h-64 w-auto object-contain"
@@ -1528,13 +1533,13 @@ export default function App() {
               <h4 className="font-bold text-sm mb-6 text-[#1A1A1A]">Download Our Apps</h4>
               <div className="space-y-3">
                 <a href="https://play.google.com/store/apps/details?id=my.maukerja.applicant" target="_blank" rel="noopener noreferrer" className="block transition-transform hover:scale-105">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-[42px] w-auto" />
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-[42px] w-auto" />
                 </a>
                 <a href="https://apps.apple.com/my/app/maukerja-malaysia-job-search/id1383614538" target="_blank" rel="noopener noreferrer" className="block transition-transform hover:scale-105">
-                  <img src="https://www.maukerja.my/mkt/images/appstore.png" alt="App Store" className="h-[40px] w-auto" />
+                  <img loading="lazy" src="https://www.maukerja.my/mkt/images/appstore.png" alt="App Store" className="h-[40px] w-auto" />
                 </a>
                 <a href="https://news.google.com/publications/CAAqBwgKMPiIoQswkJO5Aw?hl=en-ID&gl=ID&ceid=ID:en" target="_blank" rel="noopener noreferrer" className="block mt-4 transition-transform hover:scale-105">
-                  <img src="https://www.maukerja.my/mkt/images/googlenews.png" alt="Google News" className="h-8 w-auto" />
+                  <img loading="lazy" src="https://www.maukerja.my/mkt/images/googlenews.png" alt="Google News" className="h-8 w-auto" />
                 </a>
               </div>
             </div>
