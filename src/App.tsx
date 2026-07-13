@@ -812,7 +812,7 @@ export default function App() {
                     
                     {/* Shining text */}
                     <span className="relative z-10 italic bg-gradient-to-r from-[#FF9800] via-[#FF5722] to-[#FF9800] bg-clip-text text-transparent animate-shimmer font-bold">
-                      FREE
+                      FREE*
                     </span>
 
                     {/* Double-Loop Underline SVG */}
@@ -851,13 +851,18 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center gap-3">
-                <Button 
-                  onClick={() => setIsHiringModalOpen(true)}
-                  className="w-full sm:w-auto bg-primary hover:brightness-90 text-white px-8 h-12 md:h-14 rounded-xl text-sm md:text-base font-bold shadow-lg shadow-primary/15 transition-all transform hover:scale-105"
-                >
-                  Start Hiring for FREE
-                </Button>
+              <div className="flex flex-col gap-3 mt-4">
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <Button 
+                    onClick={() => setIsHiringModalOpen(true)}
+                    className="w-full sm:w-auto bg-primary hover:brightness-90 text-white px-8 h-12 md:h-14 rounded-xl text-sm md:text-base font-bold shadow-lg shadow-primary/15 transition-all transform hover:scale-105"
+                  >
+                    Start Hiring for FREE
+                  </Button>
+                </div>
+                <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-sm mx-auto lg:mx-0">
+                  *Enjoy FREE Job Ads for Freelance, Part-time, Internship, Volunteer, High-Pay, and Singapore jobs.
+                </p>
               </div>
 
               {/* Google Rating Below Button */}
