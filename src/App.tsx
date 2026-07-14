@@ -358,44 +358,39 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                 After you click the register button below, You’ll be redirected to AJobThing, the official employer platform to post jobs on Maukerja.
               </p>
 
+              
               <div className="max-w-[110px] mx-auto pt-0.5">
-                <img loading="lazy" 
-                  src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-ec64e417-6572-4498-90f7-0591b5b3eaff.png" 
-                  alt="AJobThing & Maukerja" 
-                  className="w-full h-auto object-contain rounded-lg"
-                  referrerPolicy="no-referrer"
-                />
+                <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-ec64e417-6572-4498-90f7-0591b5b3eaff.png" alt="AJobThing & Maukerja" className="w-full h-auto object-contain rounded-lg" referrerPolicy="no-referrer" />
+              </div>
+
+              <div className="w-full mt-1 flex flex-col gap-2.5">
+                {isYes ? (
+                  <Button 
+                    className="w-full h-12 bg-primary hover:brightness-90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
+                    onClick={() => window.open("https://www.ajobthing.com/login?utm_campaign=googleads&utm_medium=loginbutton&utm_source=LP-freejobads", "_blank")}
+                  >
+                    Login
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
+                ) : (
+                  <Button 
+                    className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
+                    onClick={() => window.open("https://www.ajobthing.com/register?utm_campaign=googleads&utm_medium=registerbutton&utm_source=LP-freejobads", "_blank")}
+                  >
+                    Register
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
+                )}
+                <Button 
+                  variant="outline" 
+                  className="w-full h-10 border-slate-200 hover:bg-slate-50 text-slate-500 rounded-xl font-bold text-xs transition-colors cursor-pointer"
+                  onClick={onSuccess}
+                >
+                  Done & Close
+                </Button>
               </div>
             </div>
           )}
-          
-          <div className="w-full mt-1 flex flex-col gap-2.5">
-            {isYes ? (
-              <Button 
-                className="w-full h-12 bg-primary hover:brightness-90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                onClick={() => window.open("https://www.ajobthing.com/login?utm_campaign=googleads&utm_medium=loginbutton&utm_source=LP-freejobads", "_blank")}
-              >
-                Login
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-            ) : (
-              <Button 
-                className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                onClick={() => window.open("https://www.ajobthing.com/register?utm_campaign=googleads&utm_medium=registerbutton&utm_source=LP-freejobads", "_blank")}
-              >
-                Register
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-            )}
-
-            <Button 
-              variant="outline"
-              className="w-full h-10 border-slate-200 hover:bg-slate-50 text-slate-500 rounded-xl font-bold text-xs transition-colors cursor-pointer"
-              onClick={onSuccess}
-            >
-              Done & Close
-            </Button>
-          </div>
         </div>
       </div>
     );
@@ -404,76 +399,36 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
   return (
     <div className="rounded-[2.5rem] overflow-hidden bg-white">
       <div className="bg-primary pt-5 pb-3 px-5 text-white text-center flex flex-col items-center">
-          <button 
-            onClick={onScrollToTestimonials}
-            className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-3 hover:bg-white/20 transition-all cursor-pointer"
-          >
-            <img loading="lazy" 
-              src="https://www.ajobthing.com/mkt/images/ajt/google.svg" 
-              alt="Google" 
-              className="h-2.5 w-2.5 brightness-0 invert" 
-              referrerPolicy="no-referrer"
-            />
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map(i => <Star key={i} className="h-2 w-2 fill-[#FFC107] text-[#FFC107]" />)}
-            </div>
-            <span className="text-[9px] font-bold uppercase tracking-wider">4.9 Google Reviews</span>
-          </button>
+        <button onClick={onScrollToTestimonials} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-3 hover:bg-white/20 transition-all cursor-pointer">
+          <img loading="lazy" src="https://www.ajobthing.com/mkt/images/ajt/google.svg" alt="Google" className="h-2.5 w-2.5 brightness-0 invert" referrerPolicy="no-referrer" />
+          <div className="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Star key={i} className="h-2 w-2 fill-[#FFC107] text-[#FFC107]" />
+            ))}
+          </div>
+          <span className="text-[9px] font-bold uppercase tracking-wider">4.9 Google Reviews</span>
+        </button>
         <h3 className="text-xl font-bold tracking-tight">Start Hiring for FREE</h3>
       </div>
       <div className="pt-2 px-6 pb-6 md:pt-3 md:px-8 md:pb-8 space-y-4 bg-white">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-3">
             <div className="space-y-1">
-              <Label htmlFor="fullName" className="text-sm font-semibold text-slate-700">
-                Full Name <span className="text-red-500">*</span>
-              </Label>
-              <Input 
-                id="fullName" 
-                required
-                value={formData.fullName}
-                onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
-                placeholder="Enter your full name" 
-                className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" 
-                autoFocus={isOpen}
-              />
+              <Label htmlFor="fullName" className="text-sm font-semibold text-slate-700">Full Name <span className="text-red-500">*</span></Label>
+              <Input id="fullName" required value={formData.fullName} onChange={(e) => setFormData(p => ({...p, fullName: e.target.value}))} placeholder="Enter your full name" className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" autoFocus={isOpen} />
             </div>
-
             <div className="space-y-1">
-              <Label htmlFor="workEmail" className="text-sm font-semibold text-slate-700">
-                Work Email <span className="text-red-500">*</span>
-              </Label>
-              <Input 
-                id="workEmail" 
-                type="email" 
-                required
-                value={formData.workEmail}
-                onChange={(e) => setFormData(prev => ({ ...prev, workEmail: e.target.value }))}
-                placeholder="Enter your work email" 
-                className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" 
-              />
+              <Label htmlFor="workEmail" className="text-sm font-semibold text-slate-700">Work Email <span className="text-red-500">*</span></Label>
+              <Input id="workEmail" type="email" required value={formData.workEmail} onChange={(e) => setFormData(p => ({...p, workEmail: e.target.value}))} placeholder="Enter your work email" className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" />
             </div>
-
             <div className="space-y-1">
-              <Label htmlFor="phone" className="text-sm font-semibold text-slate-700">
-                Phone Number <span className="text-red-500">*</span>
-              </Label>
+              <Label htmlFor="phone" className="text-sm font-semibold text-slate-700">Phone Number <span className="text-red-500">*</span></Label>
               <div className="flex h-10 w-full rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-0 transition-all group/phone shadow-sm">
                 <div className="flex items-center border-r border-slate-200 bg-slate-100/30">
                   <Popover>
-                    <PopoverTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger"
-                      >
-                        <img loading="lazy" 
-                          src={COUNTRIES.find(c => c.code === phoneCode)?.flag} 
-                          alt="Flag" 
-                          className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" 
-                        />
-                        <ChevronDown className="h-3 w-3 text-slate-400 group-hover/trigger:text-primary transition-colors" />
-                      </Button>
+                    <PopoverTrigger render={<Button variant="ghost" size="sm" className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger" />}>
+                      <img loading="lazy" src={COUNTRIES.find(c => c.code === phoneCode)?.flag} alt="Flag" className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" />
+                      <ChevronDown className="h-3 w-3 text-slate-400 group-hover/trigger:text-primary transition-colors" />
                     </PopoverTrigger>
                     <PopoverContent className="w-[300px] p-0" align="start">
                       <Command>
@@ -481,20 +436,18 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                         <CommandList>
                           <CommandEmpty>No country found.</CommandEmpty>
                           <CommandGroup>
-                            {COUNTRIES.map((c) => (
+                            {COUNTRIES.map((country) => (
                               <CommandItem
-                                key={`${c.iso}-${c.code}`}
-                                value={`${c.name} ${c.code}`}
-                                onSelect={() => {
-                                  setPhoneCode(c.code);
-                                }}
-                                className="gap-3 py-2 cursor-pointer"
+                                key={country.code}
+                                value={country.name}
+                                onSelect={() => setPhoneCode(country.code)}
+                                className="flex items-center justify-between py-2 cursor-pointer"
                               >
-                                <div className="flex items-center gap-3 flex-1">
-                                  <img loading="lazy" src={c.flag} alt={c.iso} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" />
-                                  <span className="font-bold text-sm text-slate-700 min-w-[40px]">{c.code}</span>
-                                  <span className="text-xs text-slate-500 font-medium truncate">{c.name}</span>
+                                <div className="flex items-center gap-2">
+                                  <img loading="lazy" src={country.flag} alt={country.name} className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/10" />
+                                  <span>{country.name}</span>
                                 </div>
+                                <span className="text-slate-400 text-sm font-medium">{country.code}</span>
                               </CommandItem>
                             ))}
                           </CommandGroup>
@@ -502,54 +455,29 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                       </Command>
                     </PopoverContent>
                   </Popover>
+                  <span className="text-sm font-medium text-slate-600 px-2 pointer-events-none">{phoneCode}</span>
                 </div>
-                <div className="flex items-center px-0 bg-white">
-                  <span className="font-bold text-slate-800 text-sm whitespace-nowrap pl-3 pr-1">{phoneCode}</span>
-                </div>
-                <Input 
-                  id="phone" 
-                  type="tel"
-                  required
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9]/g, ""))}
-                  placeholder="123 456 789"
-                  className="flex-1 border-none shadow-none focus-visible:ring-0 rounded-none bg-transparent h-full font-bold text-slate-900 px-1 placeholder:text-slate-300 transition-all font-mono" 
-                />
+                <Input type="tel" required value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9]/g, ""))} placeholder="12 345 6789" className="h-full border-none bg-transparent rounded-none focus-visible:ring-0 px-3 font-medium placeholder:text-slate-400 placeholder:font-normal" />
               </div>
             </div>
-
+            
             <div className="space-y-1">
-              <Label htmlFor="companyName" className="text-sm font-semibold text-slate-700">
-                  Company Name <span className="text-red-500">*</span>
-              </Label>
-              <Input 
-                id="companyName" 
-                required
-                value={formData.companyName}
-                onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
-                placeholder="Enter Company Name" 
-                className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" 
-              />
+              <Label htmlFor="companyName" className="text-sm font-semibold text-slate-700">Company Name <span className="text-red-500">*</span></Label>
+              <Input id="companyName" required value={formData.companyName} onChange={(e) => setFormData(p => ({...p, companyName: e.target.value}))} placeholder="Enter your company name" className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" />
             </div>
 
             <div className="space-y-1">
               <Label className="text-sm font-semibold text-slate-700">Select the free job ad you want to claim <span className="text-slate-400 font-normal">(optional)</span></Label>
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button 
-                    type="button"
-                    variant="outline" 
-                    className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white"
-                  >
-                    <span className="truncate">
-                      {selectedFreeAds.length === 0 
-                        ? "Select free job ad options" 
-                        : selectedFreeAds.length === FREE_AD_OPTIONS.length 
-                          ? "All 6 Free Job Ads selected" 
-                          : selectedFreeAds.map(val => FREE_AD_OPTIONS.find(o => o.value === val)?.label || val).join(", ")}
-                    </span>
-                    <ChevronDown className="h-4 w-4 opacity-50 ml-2 shrink-0" />
-                  </Button>
+                <PopoverTrigger render={<Button variant="outline" className="w-full justify-between h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm text-left px-3 hover:bg-white" />}>
+                  <span className="truncate">
+                    {selectedFreeAds.length === 0 
+                      ? "Select free job ad options" 
+                      : selectedFreeAds.length === FREE_AD_OPTIONS.length 
+                        ? "All 6 Free Job Ads selected" 
+                        : selectedFreeAds.map(val => FREE_AD_OPTIONS.find(o => o.value === val)?.label || val).join(", ")}
+                  </span>
+                  <ChevronDown className="h-4 w-4 opacity-50 ml-2 shrink-0" />
                 </PopoverTrigger>
                 <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-3 bg-white border border-slate-200 rounded-xl shadow-xl space-y-2 z-[150]" align="start">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
@@ -558,193 +486,85 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                       type="button" 
                       variant="ghost" 
                       size="sm" 
-                      className="h-auto p-1 text-xs text-primary font-bold hover:bg-transparent"
-                      onClick={() => {
-                        if (selectedFreeAds.length === FREE_AD_OPTIONS.length) {
-                          setSelectedFreeAds([]);
-                        } else {
-                          setSelectedFreeAds(FREE_AD_OPTIONS.map(o => o.value));
-                        }
-                      }}
+                      className="h-6 px-2 text-xs font-bold text-primary hover:bg-primary/10 rounded-md cursor-pointer"
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setSelectedFreeAds(selectedFreeAds.length === FREE_AD_OPTIONS.length ? [] : FREE_AD_OPTIONS.map(o => o.value)); }}
                     >
                       {selectedFreeAds.length === FREE_AD_OPTIONS.length ? "Deselect All" : "Select All"}
                     </Button>
                   </div>
-                  <div className="space-y-2 max-h-[220px] overflow-y-auto">
-                    {FREE_AD_OPTIONS.map(opt => {
-                      const checked = selectedFreeAds.includes(opt.value);
-                      return (
-                        <div 
-                          key={opt.value} 
-                          className="flex items-center gap-3 cursor-pointer py-1 px-1.5 hover:bg-slate-50 rounded-lg transition-colors"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            if (checked) {
-                              setSelectedFreeAds(selectedFreeAds.filter(v => v !== opt.value));
-                            } else {
-                              setSelectedFreeAds([...selectedFreeAds, opt.value]);
-                            }
-                          }}
-                        >
-                          <Checkbox 
-                            checked={checked} 
-                            onCheckedChange={() => {}}
-                          />
-                          <span className="text-sm text-slate-700 font-medium select-none">{opt.label}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {FREE_AD_OPTIONS.map((option) => (
+                    <div key={option.value} className="flex items-center space-x-2.5 p-1.5 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setSelectedFreeAds(prev => prev.includes(option.value) ? prev.filter(v => v !== option.value) : [...prev, option.value]); }}>
+                      <Checkbox id={option.value} checked={selectedFreeAds.includes(option.value)} className="rounded-md border-slate-300 data-[state=checked]:bg-primary data-[state=checked]:border-primary pointer-events-none" />
+                      <Label htmlFor={option.value} className="text-sm font-medium text-slate-700 cursor-pointer pointer-events-none flex-1">{option.label}</Label>
+                    </div>
+                  ))}
                 </PopoverContent>
               </Popover>
             </div>
 
-            <div className="space-y-1">
-              <Label className="text-sm font-semibold text-slate-700">Do you also have full-time hiring needs? <span className="text-red-500">*</span></Label>
-              <Select 
-                value={formData.fullTimeNeeds}
-                onValueChange={(val) => {
-                  setFormData(prev => ({ 
-                    ...prev, 
-                    fullTimeNeeds: val,
-                    positionsPlanned: val && val.startsWith("Yes") ? prev.positionsPlanned : ""
-                  }));
-                }}
-              >
-                <SelectTrigger className="w-full h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm">
-                  <SelectValue placeholder="Select full-time needs" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Yes, urgent hiring">Yes, urgent hiring</SelectItem>
-                  <SelectItem value="Yes, hiring next month">Yes, hiring next month</SelectItem>
-                  <SelectItem value="Yes, in 2–3 months">Yes, in 2–3 months</SelectItem>
-                  <SelectItem value="Not yet planned">Not yet planned</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {formData.fullTimeNeeds && formData.fullTimeNeeds.startsWith("Yes") && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                transition={{ duration: 0.3 }}
-                className="space-y-1 overflow-hidden"
-              >
-                <Label className="text-sm font-semibold text-slate-700">How many full-time positions are you planning to hire? <span className="text-red-500">*</span></Label>
-                <Select 
-                  value={formData.positionsPlanned}
-                  onValueChange={(val) => setFormData(prev => ({ ...prev, positionsPlanned: val }))}
-                >
-                  <SelectTrigger className="w-full h-10 border-slate-200 bg-white rounded-xl font-medium text-slate-700 shadow-sm">
-                    <SelectValue placeholder="Select positions planned" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-6">1-6</SelectItem>
-                    <SelectItem value="7-15">7-15</SelectItem>
-                    <SelectItem value="16-30">16-30</SelectItem>
-                    <SelectItem value="More than 30">More than 30</SelectItem>
-                  </SelectContent>
-                </Select>
-              </motion.div>
-            )}
-
-            <div className="space-y-2">
-              <Label className="text-sm font-semibold text-slate-700">Do you have an AJobThing account to post job on Maukerja? <span className="text-red-500">*</span></Label>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, hasAJobThingAccount: "Yes" }))}
-                  className={`h-11 rounded-xl border font-bold text-sm transition-all flex items-center justify-center cursor-pointer shadow-sm ${
-                    formData.hasAJobThingAccount === "Yes"
-                      ? "border-primary bg-primary/5 text-primary"
-                      : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:border-slate-300"
-                  }`}
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, hasAJobThingAccount: "No" }))}
-                  className={`h-11 rounded-xl border font-bold text-sm transition-all flex items-center justify-center cursor-pointer shadow-sm ${
-                    formData.hasAJobThingAccount === "No"
-                      ? "border-primary bg-primary/5 text-primary"
-                      : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:border-slate-300"
-                  }`}
-                >
-                  No
-                </button>
+            <div className="space-y-1.5">
+              <Label className="text-sm font-semibold text-slate-700">Are you planning to hire for Full-time needs? <span className="text-red-500">*</span></Label>
+              <div className="flex gap-4 items-center">
+                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
+                  <input type="radio" name="fullTimeNeeds" value="Yes" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => setFormData(p => ({...p, fullTimeNeeds: e.target.value}))} checked={formData.fullTimeNeeds === "Yes"} required />
+                  <span className="text-sm font-medium text-slate-700">Yes</span>
+                </label>
+                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
+                  <input type="radio" name="fullTimeNeeds" value="No" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => { setFormData(p => ({...p, fullTimeNeeds: e.target.value, positionsPlanned: ""})); }} checked={formData.fullTimeNeeds === "No"} required />
+                  <span className="text-sm font-medium text-slate-700">No</span>
+                </label>
               </div>
             </div>
 
+            {formData.fullTimeNeeds === "Yes" && (
+              <div className="space-y-1.5 animate-in slide-in-from-top-2 fade-in duration-200">
+                <Label className="text-sm font-semibold text-slate-700">How many positions? <span className="text-red-500">*</span></Label>
+                <div className="flex flex-wrap gap-2">
+                  {["1-2", "3-5", "6-10", "11-20", "20+"].map((num) => (
+                    <label key={num} className={`flex items-center space-x-2 cursor-pointer px-3 py-1.5 rounded-lg border transition-all ${formData.positionsPlanned === num ? "bg-primary/5 border-primary text-primary shadow-sm" : "bg-slate-50 border-slate-200 text-slate-600 hover:border-primary/30"}`}>
+                      <input type="radio" name="positionsPlanned" value={num} className="sr-only" onChange={(e) => setFormData(p => ({...p, positionsPlanned: e.target.value}))} checked={formData.positionsPlanned === num} required />
+                      <span className="text-sm font-bold">{num}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-1.5">
+              <Label className="text-sm font-semibold text-slate-700">Do you have an AJobThing account? <span className="text-red-500">*</span></Label>
+              <div className="flex gap-4 items-center">
+                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
+                  <input type="radio" name="hasAccount" value="Yes" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => setFormData(p => ({...p, hasAJobThingAccount: e.target.value}))} checked={formData.hasAJobThingAccount === "Yes"} required />
+                  <span className="text-sm font-medium text-slate-700">Yes</span>
+                </label>
+                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
+                  <input type="radio" name="hasAccount" value="No" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => setFormData(p => ({...p, hasAJobThingAccount: e.target.value}))} checked={formData.hasAJobThingAccount === "No"} required />
+                  <span className="text-sm font-medium text-slate-700">No</span>
+                </label>
+              </div>
+            </div>
           </div>
 
-          <div className="pt-1">
-            <Button 
-              type="submit"
-              disabled={loading}
-              className="w-full h-12 bg-primary text-white hover:brightness-90 text-lg font-bold shadow-xl shadow-primary/10 rounded-2xl group transition-all"
-            >
-              {loading ? "Submitting..." : "Start Hiring for FREE"}
-              {!loading && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
-            </Button>
-          </div>
+          <Button type="submit" disabled={loading} className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center mt-2 cursor-pointer transition-all active:scale-[0.98]">
+            {loading ? "Submitting..." : "Next"}
+          </Button>
+          
+          <p className="text-[10px] text-center text-slate-400 mt-3 leading-relaxed">
+            By clicking "Next", you agree to our <a href="https://www.ajobthing.com/terms-and-condition" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Terms of Use</a> and <a href="https://www.ajobthing.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Privacy Policy</a>.
+          </p>
         </form>
-        
-        <div className="space-y-2">
-          <p className="text-[9px] text-center text-[#555555] leading-normal font-medium px-4 tracking-tighter">
-            We value your privacy. By completing this form, you consent to us reaching out regarding our products and services as outlined in our privacy policy.
-          </p>
-          <Separator className="bg-slate-100" />
-          <p className="text-[10px] text-center font-bold text-slate-400 flex items-center justify-center gap-1 uppercase tracking-tight">
-            Are you a jobseeker? <a href="https://www.maukerja.my/register" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sign up here instead</a>
-          </p>
-        </div>
       </div>
     </div>
   );
 };
 
 export default function App() {
-  const [selectedPositions, setSelectedPositions] = React.useState<string[]>([]);
   const [isHiringModalOpen, setIsHiringModalOpen] = React.useState(false);
-  const [activeSlide, setActiveSlide] = React.useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = React.useState(false);
-  const scrollRef = React.useRef<HTMLDivElement>(null);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollPosition = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.offsetWidth;
-      const index = Math.round(scrollPosition / cardWidth);
-      setActiveSlide(index);
-    }
-  };
-
-  const scrollToSlide = (index: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        left: index * scrollRef.current.offsetWidth,
-        behavior: "smooth"
-      });
-    }
-  };
-
-  const prevSlide = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: "smooth" });
-    }
-  };
-
-  const nextSlide = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: "smooth" });
-    }
-  };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#1A1A1A] overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen font-sans text-slate-900 bg-white selection:bg-primary/20 selection:text-primary">
+      {/* SECTION 1 - TOP NAV */}
       <header className={`fixed top-0 left-0 right-0 z-[100] w-full shadow-sm shadow-slate-100/50 transition-all duration-300 ${isHiringModalOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-        {/* SECTION 1 — TOP NAV (Jobseeker link) */}
         <div className="bg-[#F8F9FA] py-2 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
             <a href="https://www.maukerja.my/" target="_blank" rel="noopener noreferrer" className="text-[10px] sm:text-xs font-bold text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
@@ -752,24 +572,18 @@ export default function App() {
             </a>
           </div>
         </div>
-
-        {/* Main Nav */}
+        
+        {/* SECTION 2 - MAIN NAV */}
         <nav className="bg-[#ED3554]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-14 md:h-16 items-center">
               <a href="https://www.maukerja.my/" target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-90 transition-opacity">
-                <img loading="lazy" 
-                  src="https://www.maukerja.my/mkt/images/logo-mk.png" 
-                  alt="Maukerja" 
-                  className="h-10 w-auto"
-                  referrerPolicy="no-referrer"
-                />
+                <img loading="lazy" src="https://www.maukerja.my/mkt/images/logo-mk.png" alt="Maukerja" className="h-10 w-auto" referrerPolicy="no-referrer" />
               </a>
-              
               <div className="flex items-center">
                 <Button 
                   variant="ghost" 
-                  className="text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 rounded-xl" 
+                  className="text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 rounded-xl"
                   onClick={() => setIsHiringModalOpen(true)}
                 >
                   Start Hiring for FREE
@@ -780,28 +594,39 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Spacer to prevent fixed header from overlapping content */}
-      <div className="h-[88px] md:h-[96px]" />
-
-      {/* SECTION 1 — HERO BANNER */}
-      <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[580px] md:h-[620px] flex items-center bg-[#F3F4F6]">
-        {/* Full bleed background image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={employerHeroBg} 
-            srcSet={`${employerHeroBgMobileWebp} 800w, ${employerHeroBgWebp} 1376w`}
-            sizes="100vw"
-            alt="Employer hiring landscape" 
-            className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
-            referrerPolicy="no-referrer"
-            fetchPriority="high"
-            decoding="async"
+      {/* HIRING MODAL */}
+      <Dialog open={isHiringModalOpen} onOpenChange={setIsHiringModalOpen}>
+        <DialogContent className="sm:max-w-md p-0 border-none bg-transparent shadow-none [&>button]:hidden z-[200]">
+          <HiringForm 
+            onSuccess={() => setIsHiringModalOpen(false)} 
+            onScrollToTestimonials={() => {
+              setIsHiringModalOpen(false);
+              document.getElementById("testimonials")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            isOpen={isHiringModalOpen}
           />
-          {/* Gentle overlay to guarantee text legibility on super small screens */}
-          <div className="absolute inset-0 bg-black/5 lg:bg-transparent" />
-        </div>
+        </DialogContent>
+      </Dialog>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <main className="pt-[88px] md:pt-[100px]">
+        {/* SECTION 1 — HERO BANNER */}
+        <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[580px] md:h-[620px] flex items-center bg-[#F3F4F6]">
+          {/* Full bleed background image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={employerHeroBg} 
+              srcSet={`${employerHeroBgMobileWebp} 800w, ${employerHeroBgWebp} 1376w`}
+              sizes="100vw"
+              alt="Employer hiring landscape" 
+              className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
+              referrerPolicy="no-referrer"
+              fetchPriority="high"
+            />
+            {/* Subtle gradient overlay to ensure text readability */}
+            <div className="absolute inset-0 bg-black/5 lg:bg-transparent" />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-xl lg:max-w-lg xl:max-w-xl w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -1468,6 +1293,7 @@ export default function App() {
       )}
 
       {/* Final Footer */}
+      </main>
       <footer className="bg-white text-[#1A1A1A] pt-20 pb-10 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 mb-16">
