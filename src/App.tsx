@@ -1,4 +1,4 @@
-import employerHeroBg from "./assets/images/hero-bg.jpg";
+import employerHeroBg from "./assets/images/fb_hr_manager_widescreen_1783483895940.jpg";
 import employerHeroBgWebp from "./assets/images/hero-bg.webp";
 import employerHeroBgMobileWebp from "./assets/images/hero-bg-mobile.webp";
 import * as React from "react";
@@ -562,6 +562,7 @@ export default function App() {
   const [isHiringModalOpen, setIsHiringModalOpen] = React.useState(false);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = React.useState(false);
 
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -645,13 +646,10 @@ export default function App() {
           {/* Full bleed background image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src={employerHeroBg} 
-              srcSet={`${employerHeroBgMobileWebp} 800w, ${employerHeroBgWebp} 1376w`}
-              sizes="100vw"
+              src={employerHeroBg}
               alt="Employer hiring landscape" 
               className="w-full h-full object-cover object-[98%_top] md:object-[right_top] lg:object-[95%_top] select-none"
               referrerPolicy="no-referrer"
-              fetchPriority="high"
             />
             {/* Subtle gradient overlay to ensure text readability */}
             <div className="absolute inset-0 bg-black/5 lg:bg-transparent" />
