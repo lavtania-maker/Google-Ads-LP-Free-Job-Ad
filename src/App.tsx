@@ -424,7 +424,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             <div className="space-y-1">
               <Label htmlFor="phone" className="text-sm font-semibold text-slate-700">Phone Number <span className="text-red-500">*</span></Label>
               <div className="flex h-10 w-full rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-0 transition-all group/phone shadow-sm">
-                <div className="flex items-center border-r border-slate-200 bg-slate-100/30">
+                <div className="flex items-center border-r border-slate-200 bg-slate-100/30 shrink-0">
                   <Popover>
                     <PopoverTrigger render={<Button variant="ghost" size="sm" className="h-full px-3 gap-1 rounded-none hover:bg-slate-100/50 border-none transition-colors group/trigger" />}>
                       <img loading="lazy" src={COUNTRIES.find(c => c.code === phoneCode)?.flag} alt="Flag" className="w-6 h-4 object-cover rounded-sm ring-1 ring-black/5" />
@@ -455,7 +455,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                       </Command>
                     </PopoverContent>
                   </Popover>
-                  <span className="text-sm font-medium text-slate-600 px-2 pointer-events-none">{phoneCode}</span>
+                  <span className="text-sm font-medium text-slate-600 px-2 pr-4 pointer-events-none">{phoneCode}</span>
                 </div>
                 <Input type="tel" required value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9]/g, ""))} placeholder="12 345 6789" className="h-full border-none bg-transparent rounded-none focus-visible:ring-0 px-3 font-medium placeholder:text-slate-400 placeholder:font-normal" />
               </div>
@@ -503,30 +503,33 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             </div>
 
             <div className="space-y-1.5">
-              <Label className="text-sm font-semibold text-slate-700">Are you planning to hire for Full-time needs? <span className="text-red-500">*</span></Label>
-              <div className="flex gap-4 items-center">
-                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
-                  <input type="radio" name="fullTimeNeeds" value="Yes" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => setFormData(p => ({...p, fullTimeNeeds: e.target.value}))} checked={formData.fullTimeNeeds === "Yes"} required />
-                  <span className="text-sm font-medium text-slate-700">Yes</span>
-                </label>
-                <label className="flex items-center space-x-2 cursor-pointer bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 hover:border-primary/50 transition-all">
-                  <input type="radio" name="fullTimeNeeds" value="No" className="text-primary focus:ring-primary h-4 w-4" onChange={(e) => { setFormData(p => ({...p, fullTimeNeeds: e.target.value, positionsPlanned: ""})); }} checked={formData.fullTimeNeeds === "No"} required />
-                  <span className="text-sm font-medium text-slate-700">No</span>
-                </label>
-              </div>
+              <Label className="text-sm font-semibold text-slate-700">Do you also have full-time hiring needs? <span className="text-red-500">*</span></Label>
+              <Select value={formData.fullTimeNeeds} onValueChange={(value) => setFormData(p => ({...p, fullTimeNeeds: value, positionsPlanned: value === "Not yet planned" ? "" : p.positionsPlanned}))}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Yes, urgent hiring">Yes, urgent hiring</SelectItem>
+                  <SelectItem value="Yes, hiring next month">Yes, hiring next month</SelectItem>
+                  <SelectItem value="Yes, in 2–3 months">Yes, in 2–3 months</SelectItem>
+                  <SelectItem value="Not yet planned">Not yet planned</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
-            {formData.fullTimeNeeds === "Yes" && (
+            {formData.fullTimeNeeds && formData.fullTimeNeeds.startsWith("Yes") && (
               <div className="space-y-1.5 animate-in slide-in-from-top-2 fade-in duration-200">
-                <Label className="text-sm font-semibold text-slate-700">How many positions? <span className="text-red-500">*</span></Label>
-                <div className="flex flex-wrap gap-2">
-                  {["1-2", "3-5", "6-10", "11-20", "20+"].map((num) => (
-                    <label key={num} className={`flex items-center space-x-2 cursor-pointer px-3 py-1.5 rounded-lg border transition-all ${formData.positionsPlanned === num ? "bg-primary/5 border-primary text-primary shadow-sm" : "bg-slate-50 border-slate-200 text-slate-600 hover:border-primary/30"}`}>
-                      <input type="radio" name="positionsPlanned" value={num} className="sr-only" onChange={(e) => setFormData(p => ({...p, positionsPlanned: e.target.value}))} checked={formData.positionsPlanned === num} required />
-                      <span className="text-sm font-bold">{num}</span>
-                    </label>
-                  ))}
-                </div>
+                <Label className="text-sm font-semibold text-slate-700">How many full-time positions are you planning to hire? <span className="text-red-500">*</span></Label>
+                <Select value={formData.positionsPlanned} onValueChange={(value) => setFormData(p => ({...p, positionsPlanned: value}))}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {["1-6", "7-15", "16-30", "More than 30"].map((num) => (
+                      <SelectItem key={num} value={num}>{num}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             )}
 
@@ -626,19 +629,6 @@ export default function App() {
         </nav>
       </header>
 
-      {/* HIRING MODAL */}
-      <Dialog open={isHiringModalOpen} onOpenChange={setIsHiringModalOpen}>
-        <DialogContent className="sm:max-w-md p-0 border-none bg-transparent shadow-none [&>button]:hidden z-[200]">
-          <HiringForm 
-            onSuccess={() => setIsHiringModalOpen(false)} 
-            onScrollToTestimonials={() => {
-              setIsHiringModalOpen(false);
-              document.getElementById("testimonials")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            isOpen={isHiringModalOpen}
-          />
-        </DialogContent>
-      </Dialog>
 
       <main className="pt-[88px] md:pt-[100px]">
         {/* SECTION 1 — HERO BANNER */}
