@@ -560,6 +560,37 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
 
 export default function App() {
   const [isHiringModalOpen, setIsHiringModalOpen] = React.useState(false);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = React.useState(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const itemWidth = scrollRef.current.offsetWidth / 3;
+      setActiveSlide(Math.round(scrollLeft / itemWidth));
+    }
+  };
+
+  const scrollToSlide = (index: number) => {
+    setActiveSlide(index);
+    if (scrollRef.current) {
+      const itemWidth = scrollRef.current.offsetWidth / 3;
+      scrollRef.current.scrollTo({
+        left: index * itemWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const nextSlide = () => {
+    const next = Math.min(activeSlide + 1, Math.ceil(TESTIMONIALS.length / 1) - 1);
+    scrollToSlide(next);
+  };
+
+  const prevSlide = () => {
+    const prev = Math.max(activeSlide - 1, 0);
+    scrollToSlide(prev);
+  };
 
   return (
     <div className="min-h-screen font-sans text-slate-900 bg-white selection:bg-primary/20 selection:text-primary">
