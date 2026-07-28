@@ -247,14 +247,24 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
     };
 
     try {
-      const response = await fetch("/api/submit-lead", {
+      // If you are deploying on a static host (like Vercel, Netlify, or Hostinger),
+      // the local Express server (/api/submit-lead) will not exist.
+      // We must fetch the Google Apps Script directly from the client side.
+      // Make sure to replace this with your actual deployed Apps Script Web App URL!
+      const scriptUrl = import.meta.env.VITE_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycby_Jxr3h1SMi6OKl4b3I6HAiJkxuucFcFKnav-vwjY-FKy0tw7Tv-dj7GJAI62mPbci0g/exec";
+      
+      const response = await fetch(scriptUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        // Using text/plain avoids CORS preflight OPTIONS request
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
 
+      // Google Apps Script usually returns 200 OK even for errors,
+      // so you should check the response if you can.
+      // Since it might redirect, response.ok is generally sufficient if the redirect succeeds.
       if (!response.ok) {
-        throw new Error("Submission failed");
+        throw new Error(`Submission failed with status: ${response.status}`);
       }
 
       // Track successful form submission with Google Analytics
