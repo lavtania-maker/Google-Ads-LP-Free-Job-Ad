@@ -257,6 +257,11 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
         throw new Error("Submission failed");
       }
 
+      // Track successful form submission with Google Analytics
+      if (typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', 'submit_free_job_ads');
+      }
+
       setSubmittedHasAccount(formData.hasAJobThingAccount);
 
       // Reset form state
@@ -549,11 +554,11 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
           </div>
 
           <Button type="submit" disabled={loading} className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center mt-2 cursor-pointer transition-all active:scale-[0.98]">
-            {loading ? "Submitting..." : "Next"}
+            {loading ? "Submitting..." : "Submit"}
           </Button>
           
           <p className="text-[10px] text-center text-slate-400 mt-3 leading-relaxed">
-            By clicking "Next", you agree to our <a href="https://www.ajobthing.com/terms-and-condition" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Terms of Use</a> and <a href="https://www.ajobthing.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Privacy Policy</a>.
+            By clicking "Submit", you agree to our <a href="https://www.ajobthing.com/terms-and-condition" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Terms of Use</a> and <a href="https://www.ajobthing.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Privacy Policy</a>.
           </p>
         </form>
       </div>
