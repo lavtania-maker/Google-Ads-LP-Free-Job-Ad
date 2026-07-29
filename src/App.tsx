@@ -355,7 +355,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                   <li className="flex items-start gap-2.5">
                     <span className="flex items-center justify-center bg-[#ED3554] text-white font-bold rounded-full h-5 w-5 text-[10px] shrink-0 mt-0.5">1</span>
                     <span>
-                      Click the <a href="https://www.ajobthing.com/register?utm_campaign=googleads&utm_medium=registerbutton&utm_source=LP-freejobads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold decoration-primary/30 decoration-2">Register</a> button below
+                      Click the <a href="https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold decoration-primary/30 decoration-2">Register</a> button below
                     </span>
                   </li>
                   <li className="flex items-start gap-2.5">
@@ -390,7 +390,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                 ) : (
                   <Button 
                     className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                    onClick={() => window.open("https://www.ajobthing.com/register?utm_campaign=googleads&utm_medium=registerbutton&utm_source=LP-freejobads", "_blank")}
+                    onClick={() => window.open("https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register", "_blank")}
                   >
                     Register
                     <ArrowRight className="h-5 w-5" />
