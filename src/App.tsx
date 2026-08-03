@@ -127,6 +127,66 @@ const TRUSTED_LOGOS = [
   { name: "DHL", url: "https://www.maukerja.my/mkt/images/mkrb-companies/dhl.png" },
 ];
 
+const FreeAdsCountdown: React.FC = () => {
+  const [timeLeft, setTimeLeft] = React.useState<{ days: number; hours: number; minutes: number; seconds: number }>({
+    days: 6,
+    hours: 23,
+    minutes: 59,
+    seconds: 59,
+  });
+
+  React.useEffect(() => {
+    const target = Date.now() + 7 * 24 * 60 * 60 * 1000;
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatNumber = (num: number) => String(num).padStart(2, '0');
+
+  return (
+    <div className="bg-amber-50/90 border border-amber-200/80 rounded-xl p-3 my-2 text-center shadow-sm">
+      <p className="text-amber-900 font-bold text-xs md:text-sm mb-2">
+        Your FREE Job Ads will be expired in 7 days. Use now.
+      </p>
+      <div className="flex items-center justify-center gap-1.5 text-amber-950">
+        <div className="flex flex-col items-center bg-white border border-amber-200/70 rounded-lg px-2 py-1 min-w-[44px]">
+          <span className="font-extrabold text-sm md:text-base leading-none">{timeLeft.days}</span>
+          <span className="text-[9px] font-bold text-amber-700 uppercase mt-0.5">Days</span>
+        </div>
+        <span className="font-bold text-amber-800 text-sm">:</span>
+        <div className="flex flex-col items-center bg-white border border-amber-200/70 rounded-lg px-2 py-1 min-w-[44px]">
+          <span className="font-extrabold text-sm md:text-base leading-none">{formatNumber(timeLeft.hours)}</span>
+          <span className="text-[9px] font-bold text-amber-700 uppercase mt-0.5">Hours</span>
+        </div>
+        <span className="font-bold text-amber-800 text-sm">:</span>
+        <div className="flex flex-col items-center bg-white border border-amber-200/70 rounded-lg px-2 py-1 min-w-[44px]">
+          <span className="font-extrabold text-sm md:text-base leading-none">{formatNumber(timeLeft.minutes)}</span>
+          <span className="text-[9px] font-bold text-amber-700 uppercase mt-0.5">Mins</span>
+        </div>
+        <span className="font-bold text-amber-800 text-sm">:</span>
+        <div className="flex flex-col items-center bg-white border border-amber-200/70 rounded-lg px-2 py-1 min-w-[44px]">
+          <span className="font-extrabold text-sm md:text-base leading-none">{formatNumber(timeLeft.seconds)}</span>
+          <span className="text-[9px] font-bold text-amber-700 uppercase mt-0.5">Secs</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 interface HiringFormProps {
   onSuccess: () => void;
   onScrollToTestimonials: () => void;
@@ -341,6 +401,18 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
               <p className="text-slate-600 font-medium text-[11px] md:text-xs leading-relaxed max-w-sm mx-auto px-2">
                 📣 If you have full-time hiring needs, our hiring support team will reach out via WhatsApp to help.
               </p>
+
+              <div className="max-w-[240px] mx-auto pt-1">
+                <img
+                  loading="lazy"
+                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGl4MGJlbWJ1eXVkbjY2OWNpMzFrbTFldTN5emRsZGRzbXUwMm1paiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4K26WUN7KecyHw7fSi/giphy.gif"
+                  alt="Thank You Animation"
+                  className="w-full h-auto object-contain rounded-xl shadow-sm mx-auto"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <FreeAdsCountdown />
             </div>
           ) : (
             <div className="space-y-3.5 w-full">
@@ -373,39 +445,50 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                 After you click the register button below, You’ll be redirected to AJobThing, the official employer platform to post jobs on Maukerja.
               </p>
 
-              
-              <div className="max-w-[110px] mx-auto pt-0.5">
-                <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-ec64e417-6572-4498-90f7-0591b5b3eaff.png" alt="AJobThing & Maukerja" className="w-full h-auto object-contain rounded-lg" referrerPolicy="no-referrer" />
+              <div className="max-w-[240px] mx-auto pt-1">
+                <img
+                  loading="lazy"
+                  src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGl4MGJlbWJ1eXVkbjY2OWNpMzFrbTFldTN5emRsZGRzbXUwMm1paiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4K26WUN7KecyHw7fSi/giphy.gif"
+                  alt="Thank You Animation"
+                  className="w-full h-auto object-contain rounded-xl shadow-sm mx-auto"
+                  referrerPolicy="no-referrer"
+                />
               </div>
 
-              <div className="w-full mt-1 flex flex-col gap-2.5">
-                {isYes ? (
-                  <Button 
-                    className="w-full h-12 bg-primary hover:brightness-90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                    onClick={() => window.open("https://www.ajobthing.com/login?utm_campaign=googleads&utm_medium=loginbutton&utm_source=LP-freejobads", "_blank")}
-                  >
-                    Login
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                ) : (
-                  <Button 
-                    className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                    onClick={() => window.open("https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register", "_blank")}
-                  >
-                    Register
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                )}
-                <Button 
-                  variant="outline" 
-                  className="w-full h-10 border-slate-200 hover:bg-slate-50 text-slate-500 rounded-xl font-bold text-xs transition-colors cursor-pointer"
-                  onClick={onSuccess}
-                >
-                  Done & Close
-                </Button>
-              </div>
+              <FreeAdsCountdown />
             </div>
           )}
+
+          <div className="max-w-[110px] mx-auto pt-0.5">
+            <img loading="lazy" src="https://s3-ap-southeast-1.amazonaws.com/ricebowl/images/marketing-campaign/image-ec64e417-6572-4498-90f7-0591b5b3eaff.png" alt="AJobThing & Maukerja" className="w-full h-auto object-contain rounded-lg" referrerPolicy="no-referrer" />
+          </div>
+
+          <div className="w-full mt-1 flex flex-col gap-2.5">
+            {isYes ? (
+              <Button 
+                className="w-full h-12 bg-primary hover:brightness-90 text-white font-bold text-base rounded-xl shadow-lg shadow-primary/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
+                onClick={() => window.open("https://www.ajobthing.com/login?utm_campaign=googleads&utm_medium=loginbutton&utm_source=LP-freejobads", "_blank")}
+              >
+                Login
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            ) : (
+              <Button 
+                className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
+                onClick={() => window.open("https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register", "_blank")}
+              >
+                Register
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            )}
+            <Button 
+              variant="outline" 
+              className="w-full h-10 border-slate-200 hover:bg-slate-50 text-slate-500 rounded-xl font-bold text-xs transition-colors cursor-pointer"
+              onClick={onSuccess}
+            >
+              Done & Close
+            </Button>
+          </div>
         </div>
       </div>
     );
