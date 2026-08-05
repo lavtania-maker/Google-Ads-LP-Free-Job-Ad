@@ -213,6 +213,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
     fullName: "",
     workEmail: "",
     companyName: "",
+    positionToPost: "",
     claimedFreeJobAd: "",
     fullTimeNeeds: "",
     positionsPlanned: "",
@@ -225,6 +226,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
         fullName: "",
         workEmail: "",
         companyName: "",
+        positionToPost: "",
         claimedFreeJobAd: "",
         fullTimeNeeds: "",
         positionsPlanned: "",
@@ -300,6 +302,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
       email: formData.workEmail,
       phone_number: `${phoneCode}${phoneNumber}`,
       claimed_free_job_ad: selectedFreeAds.join(", ") || "None specified",
+      position_to_post: formData.positionToPost || "Not specified",
       headcount: formData.positionsPlanned || "N/A",
       hiring_timeline: formData.fullTimeNeeds || "Not specified",
       has_ajobthing_account: formData.hasAJobThingAccount,
@@ -339,6 +342,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
         fullName: "",
         workEmail: "",
         companyName: "",
+        positionToPost: "",
         claimedFreeJobAd: "",
         fullTimeNeeds: "",
         positionsPlanned: "",
@@ -598,6 +602,11 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
                   ))}
                 </PopoverContent>
               </Popover>
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="positionToPost" className="text-sm font-semibold text-slate-700">What position do you want to post? <span className="text-slate-400 font-normal">(optional)</span></Label>
+              <Input id="positionToPost" value={formData.positionToPost} onChange={(e) => setFormData(p => ({...p, positionToPost: e.target.value}))} placeholder="e.g. Sales Executive, Cashier" className="h-10 border-slate-200 bg-white rounded-xl focus-visible:ring-primary font-medium placeholder:text-slate-400 placeholder:font-normal shadow-sm" />
             </div>
 
             <div className="space-y-1.5">
