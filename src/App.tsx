@@ -323,6 +323,34 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
         body: JSON.stringify(payload)
       });
 
+      // Also send data to Lark webhook
+      try {
+        const larkWebhookUrl = "https://ajobthing.sg.larksuite.com/base/automation/webhook/event/TpQ0aWjDrwcHXXh1BOalwHBmgFb";
+        
+        let jobCategory = "";
+        if (selectedFreeAds.length > 0) {
+          const firstSelected = FREE_AD_OPTIONS.find(o => o.value === selectedFreeAds[0]);
+          jobCategory = firstSelected ? firstSelected.label : selectedFreeAds[0];
+        }
+
+        const larkPayload = {
+          "COMPANY_NAME": formData.companyName,
+          "HIRING_JOB_TITLE": formData.positionToPost,
+          "PHONE": `${phoneCode}${phoneNumber}`,
+          "EMAIL": formData.workEmail,
+          "JOB_CATEGORY": jobCategory,
+          "LEAD_SOURCE": "google_ads"
+        };
+
+        await fetch(larkWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(larkPayload)
+        });
+      } catch (larkError) {
+        console.error("Lark webhook failed:", larkError);
+      }
+
       // Google Apps Script usually returns 200 OK even for errors,
       // so you should check the response if you can.
       // Since it might redirect, response.ok is generally sufficient if the redirect succeeds.
