@@ -330,7 +330,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
         let jobCategory = "";
         if (selectedFreeAds.length > 0) {
           const firstSelected = FREE_AD_OPTIONS.find(o => o.value === selectedFreeAds[0]);
-          jobCategory = firstSelected ? firstSelected.label : selectedFreeAds[0];
+          jobCategory = firstSelected ? firstSelected.value : selectedFreeAds[0];
         }
 
         const larkPayload = {
