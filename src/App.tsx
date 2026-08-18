@@ -408,7 +408,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
           {isYes ? (
             <div className="space-y-3.5 w-full">
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 leading-tight">
-                Start Posting Your FREE Job Ads Now*!
+                Enjoy 60 FREE Job Ads for a limited time!
               </h3>
               <div className="bg-slate-50 rounded-xl p-3.5 text-left max-w-sm mx-auto border border-slate-100/80 shadow-sm">
                 <p className="text-slate-500 font-bold mb-2 text-[10px] tracking-wider uppercase">
@@ -450,7 +450,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
           ) : (
             <div className="space-y-3.5 w-full">
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 leading-tight">
-                Almost There to Post Free Job Ads*!
+                Enjoy 60 FREE Job Ads for a limited time!
               </h3>
               <div className="bg-slate-50 rounded-xl p-3.5 text-left max-w-sm mx-auto border border-slate-100/80 shadow-sm">
                 <p className="text-slate-500 font-bold mb-2 text-[10px] tracking-wider uppercase">
