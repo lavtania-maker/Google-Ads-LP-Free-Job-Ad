@@ -452,31 +452,15 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 leading-tight">
                 Enjoy 60 FREE Job Ads for a limited time!
               </h3>
-              <div className="bg-slate-50 rounded-xl p-3.5 text-left max-w-sm mx-auto border border-slate-100/80 shadow-sm">
-                <p className="text-slate-500 font-bold mb-2 text-[10px] tracking-wider uppercase">
-                  Follow these steps:
+              <div className="bg-slate-50 rounded-xl p-4 text-center max-w-sm mx-auto border border-slate-100/80 shadow-sm">
+                <p className="text-slate-900 font-bold text-sm mb-1">Don’t have an account yet?</p>
+                <p className="text-slate-600 font-medium text-sm mb-3">No worries! We can help you create one.</p>
+                <p className="text-slate-600 font-medium text-sm">
+                  <a href="https://api.whatsapp.com/send/?phone=601161825519&text=Hi+admin%2C+I+just+filled+out+the+form+on+Google+Ads+and+would+like+to+know+more+about+your+hiring+packages.+Could+you+share+more+info%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="text-primary font-bold hover:underline">
+                    Contact us
+                  </a> on WhatsApp for help.
                 </p>
-                <ol className="space-y-2 text-slate-600 font-medium text-xs md:text-sm">
-                  <li className="flex items-start gap-2.5">
-                    <span className="flex items-center justify-center bg-[#ED3554] text-white font-bold rounded-full h-5 w-5 text-[10px] shrink-0 mt-0.5">1</span>
-                    <span>
-                      Click the <a href="https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold decoration-primary/30 decoration-2">Register</a> button below
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="flex items-center justify-center bg-[#ED3554] text-white font-bold rounded-full h-5 w-5 text-[10px] shrink-0 mt-0.5">2</span>
-                    <span>Fill in the register form</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="flex items-center justify-center bg-[#ED3554] text-white font-bold rounded-full h-5 w-5 text-[10px] shrink-0 mt-0.5">3</span>
-                    <span>Start posting your FREE Job Ad</span>
-                  </li>
-                </ol>
               </div>
-
-              <p className="text-slate-600 font-medium text-[11px] md:text-xs leading-relaxed max-w-sm mx-auto px-2">
-                After you click the register button below, You’ll be redirected to AJobThing, the official employer platform to post jobs on Maukerja.
-              </p>
 
               <div className="max-w-[240px] mx-auto pt-1">
                 <img
@@ -508,7 +492,7 @@ const HiringForm = ({ onSuccess, onScrollToTestimonials, isOpen }: HiringFormPro
             ) : (
               <Button 
                 className="w-full h-12 bg-[#ED3554] hover:bg-[#D32F4F] text-white font-bold text-base rounded-xl shadow-lg shadow-red-500/10 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer"
-                onClick={() => window.open("https://www.ajobthing.com/register?utm_source=free_job_ads_lp&utm_medium=landing_page&utm_campaign=register", "_blank")}
+                onClick={() => window.open("https://api.whatsapp.com/send/?phone=601161825519&text=Hi+admin%2C+I+just+filled+out+the+form+on+Google+Ads+and+would+like+to+know+more+about+your+hiring+packages.+Could+you+share+more+info%3F&type=phone_number&app_absent=0", "_blank")}
               >
                 Register
                 <ArrowRight className="h-5 w-5" />
