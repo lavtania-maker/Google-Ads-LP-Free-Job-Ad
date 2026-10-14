@@ -22,7 +22,7 @@ type OpenFormProps = { onOpenForm: () => void };
 const FREE_JOB_TYPES = ["Freelance", "Part-time", "Internship", "Volunteer", "High-Pay", "Singapore"];
 
 const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/search?q=ajobthing+malaysia#lrd=0x31cc4986cfea123b:0xf231fba79e701aaf,1,,,,";
+  "https://www.google.com/search?kgmid=/g/11bymx0j2z&hl=en-ID&q=AJobThing+-+Your+Ultimate+Recruitment+%26+Hiring+Solution&shem=epsd1,esd2e,ltae,rimspwouoe,sdpie&shndl=30&source=sh/x/loc/osrp/m5/1&kgs=e2b38152e6c48b66&utm_source=epsd1,esd2e,ltae,rimspwouoe,sdpie,sh/x/loc/osrp/m5/1";
 
 const TRUSTED_LOGOS = [
   { name: "Shopee", url: "https://www.maukerja.my/mkt/images/mkrb-companies/shopee.png" },
